@@ -1,0 +1,29 @@
+// Successfil pair of spells and potions
+// binary search
+
+class Solution {
+public:
+    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+        
+        int s= spells.size();
+        int p= potions.size();
+        
+        vector<int> ans;// to store the ans
+        
+        sort(potions.begin(),potions.end());
+        
+        for( long long i: spells){        // for(auto i:spells)
+            int left=0, right=p-1,mid; // implementing binary search
+            
+            while(left<=right){
+                mid= (left+right)>>1;
+                
+                if(i*potions[mid] >=success )   right=mid-1;     // if((long long) i*potions[mid] >= sucess)
+                else  left=mid+1;
+                
+            }
+            ans.push_back(p-left);
+        }
+        return ans;
+    }
+};
