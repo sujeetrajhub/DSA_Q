@@ -1,0 +1,34 @@
+class Solution {
+public:
+    string greatestLetter(string s) {
+        
+        // storing the character present in the string and its occurance number
+        unordered_map<char,int> mp;
+        
+        for(auto it:s){
+            mp[it]++;
+        }
+        
+        sort(s.begin(),s.end());
+        
+        string ans="";  // declaring a string to store the answer
+        
+        // for the entire string checking the 
+        
+        for(int i=0;i<s.size();i++){
+            
+            char l=tolower(s[i]);
+            char u=toupper(s[i]);
+
+            // if both lower and uppercase are present then store it into ans
+            // it will take greatest english letter that have occured more than 1 because it will run till n
+            
+            if(mp[l] && mp[u]){
+                ans=u;  // return the uppercase if the condn satisfied
+            }
+            
+      }
+        
+        return ans;
+    }
+};
