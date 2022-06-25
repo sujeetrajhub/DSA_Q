@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+        int k=0;
+        while(s[k]==' ') k++; // To skip the spaces
+        
+        bool negative=0;
+        if(s[k]=='-'){
+            negative=1; // To mark the negative numbers
+            k++;
+        }
+        else if(s[k]=='+') k++; // To skip the positive sign
+        
+        long long sum=0;
+        
+        for(int i=k;i<s.length();i++){
+            if(s[i]<='9' && s[i]>='0'){
+                sum*=10;
+                sum+=(s[i]-'0');
+            }
+            else break;
+            
+            if(sum > INT_MAX){
+                return negative? INT_MIN: INT_MAX; 
+            }
+        }
+        return negative? (-1*sum) : sum;
+    }
+};
