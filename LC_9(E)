@@ -1,0 +1,27 @@
+class Solution {
+public:
+    // bool isPalindrome(int x) {
+    //     string s= to_string(x);
+    //     reverse(s.begin(),s.end());
+    //     if(to_string(x)==s)
+    //         return true;
+    //     return false;
+    // }
+    
+    bool isPalindrome(int x) {
+        int rem;
+        long reversed=0;
+        int original=x;
+        
+        while(x>0 && x!=0){
+            rem=x%10;
+            reversed=reversed *10 + rem;
+            x/=10;
+        }
+        if(original==reversed){
+            return true;
+        }
+        else
+            return false;
+    }
+};
