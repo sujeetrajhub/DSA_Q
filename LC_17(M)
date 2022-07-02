@@ -1,0 +1,53 @@
+Idea:
+
+Example:
+for digits = "23", (2 maps to 'a', 'b', 'c' & 3 maps to 'd', 'e', 'f').
+Start with 'a', find all the possible letter combinations starting with 'a' ("ad", "ae", "af") then come back and repeat the same for other letters that 2 maps to) (Just like we start at a source node, find all the possible paths to the destination node).
+So, we can solve this problem using Recursion & Backtracking
+Algorithm:
+
+store the possible string values for digits 0-9 in a vector string array called "values"
+store the possible strings in a string variable "s"
+start from the first index of string digits and recursively call the solve function
+solve(int i, int n, string s, vector<string> &ans, string digits, vector<string> &values)
+i = curr index
+n = size of digits
+ans = resultant vector
+s = curr_string
+values = string array which store the string values corresponding to the specific digit
+When i==digits.size(), add the formed combination to the ans vector and start backtracking to make more combinations.
+Finally, return the ans vector.
+
+
+
+
+class Solution
+{
+public:
+    void solve(int i, int n, string s, vector<string> &ans, string digits, vector<string> &values)
+    {
+        if (i == n)
+        {
+            ans.push_back(s);
+            return;
+        }
+        int number = digits[i] - '0';
+        int len = values[number].length();
+        for (int j = 0; j < len; j++)
+        {
+            s.push_back(values[number][j]);
+            solve(i + 1, n, s, ans, digits, values);
+            s.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits)
+    {
+        vector<string> ans;
+        vector<string> values = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        int n = digits.size();
+        if (n == 0)
+            return {};
+        solve(0, n, "", ans, digits, values);
+        return ans;
+    }
+};
