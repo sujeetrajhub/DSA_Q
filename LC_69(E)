@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int mySqrt(int x) {
+        // edge case: small x
+        if (x < 2) return x;
+        // support variables
+        long l = 0, r = x, m, sq;
+        while (l < r) {
+            m = (l + r) >> 1, sq = m * m;
+            // first case: match
+            if (sq <= x && sq + (m << 1) + 1 > x) return m;
+            // second case: too low
+            else if (sq < x) l = m;
+            // third case: too high
+            else r = m;
+        }
+        return l;
+    }
+};
