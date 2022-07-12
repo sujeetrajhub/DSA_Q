@@ -1,0 +1,27 @@
+class Solution {
+public:
+    
+    bool isTrue(TreeNode *p , TreeNode *q){
+        if(p==NULL && q==NULL) 
+            return true;
+        if(p==NULL || q==NULL)  
+            return false;
+        
+        if((p->val==q->val) && isTrue(p->left,q->right) && isTrue(p->right,q->left)) {
+            return true;
+        }
+           return false;
+    }
+    
+    
+    bool isSymmetric(TreeNode* root) {
+        if(root==NULL) return true;
+        
+        if(!root->right && !root->left) return true;
+            
+        if(isTrue(root->left,root->right)){
+            return true;
+        }
+        return false;
+    }
+};
