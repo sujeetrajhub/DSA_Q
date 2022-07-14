@@ -1,0 +1,33 @@
+class Solution {
+public:
+    
+    bool solve(TreeNode *root,int x){
+        if(!root) return false;
+        
+        x=x-root->val;
+        
+    if(!root->left && !root->right){
+        if(x==0){
+            return true;
+        }
+    }
+        return solve(root->left,x) || solve(root->right,x);
+   }
+    
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if(!root) return false;
+        
+        return solve(root,targetSum);
+    }
+    
+    
+    //    bool hasPathSum(TreeNode* root, int targetSum) {
+    //     if(root==NULL)
+    //         return false;
+    //     if(root->val==targetSum && root->left==NULL && root->right==NULL)
+    //         return true;
+    //     bool leftAns=hasPathSum(root->left, targetSum-root->val);
+    //     bool rightAns=hasPathSum(root->right, targetSum-root->val); 
+    //     return leftAns||rightAns;
+    // }
+};
