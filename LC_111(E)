@@ -1,0 +1,40 @@
+class Solution {
+public:
+    
+    int minlen=INT_MAX;
+    void preorder(TreeNode *root,int len){
+        if(!root){
+            return;
+        }
+        len++;
+        if(!root->left && !root->right){
+            if(len < minlen){
+                minlen=len;
+            }
+        }
+        preorder(root->left,len);
+        preorder(root->right,len);
+    }
+    
+    int minDepth(TreeNode* root) {
+        int len=0;
+        preorder(root,len);
+        
+        if(!root) return 0; // Base case if tree is not there
+        
+        return minlen;
+    }
+    
+    
+    
+     int minDepth(TreeNode* root) {
+        if(root == NULL) return 0;
+        int ls = minDepth(root->left);
+        int rs = minDepth(root->right);
+        if(ls == 0 && rs == 0) return 1;
+        if(rs == 0) return ls+1;
+        if(ls == 0) return rs+1;
+        int x = min(ls,rs);
+        return  x + 1;
+        
+};
