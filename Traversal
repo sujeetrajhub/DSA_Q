@@ -1,0 +1,51 @@
+1. Pre-order
+
+class Solution {
+public:
+    void dfs(TreeNode* root, vector<int> &ans){
+        if(root==NULL) return;
+        ans.push_back(root->val);
+        dfs(root->left, ans);
+        dfs(root->right, ans);
+    }
+    
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        dfs(root, ans);
+        return ans;
+    }
+};
+2. In-order
+
+class Solution {
+public:
+    void dfs(TreeNode* root, vector<int> &ans){
+        if(root==NULL) return;
+        dfs(root->left, ans);
+        ans.push_back(root->val);
+        dfs(root->right, ans);
+    }
+    
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        dfs(root, ans);
+        return ans;
+    }
+};
+3. Post-Order
+
+class Solution {
+public:
+    void dfs(TreeNode* root, vector<int>& ans){
+        if(root==NULL) return;
+        dfs(root->left, ans);
+        dfs(root->right, ans);
+        ans.push_back(root->val);
+    }
+    
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        dfs(root, ans);
+        return ans;
+    }
+};
