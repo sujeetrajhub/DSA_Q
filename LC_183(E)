@@ -1,0 +1,8 @@
+# Select c.name as Customers 
+# from customers c
+# where c.id not in(select customerId from orders)
+
+select name as "customers" 
+from customers as A left join orders as B 
+on A.id=B.customerId
+where B.customerid is NULL
