@@ -1,0 +1,12 @@
+# Select e2.name as employee from employee e1 left join employee e2
+#     on e1.id = e2.managerId and e2.salary >e1.salary where e2.name is not NULL;
+    
+    
+# SELECT e.name AS Employee
+# FROM Employee e
+# INNER JOIN Employee b ON e.managerId = b.id 
+# WHERE e.salary > b.salary
+
+
+SELECT name AS 'Employee' FROM Employee e1
+WHERE managerID IN (SELECT id FROM Employee WHERE e1.salary>salary );
