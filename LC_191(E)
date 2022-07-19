@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+        int i=0;
+        // this loop runs only number of set bits efficient than 32 times loop
+        while(n!=0){
+            n=(n & (n-1));// Removing Last Set bit 
+                            // 1011(3 set bits)&1010= 1010(2 set bits remaining)
+
+            i++;    // counting set bits
+        }
+        return i;
+    }
+};
