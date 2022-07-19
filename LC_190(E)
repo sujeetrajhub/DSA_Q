@@ -1,0 +1,26 @@
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) {
+        // string decimal=bitset<32>(n).to_string();
+        // reverse(decimal.begin(),decimal.end());
+        // return bitset<32>(decimal).to_ulong();
+        
+        int res=0;
+        for(int i=0;i<32;i++){
+            res=res<<1;
+        //Left Shift By 1
+
+             //Check if the last bit of n is set 
+            //if it is then set the last bit of res also.
+
+              if((n&1)==1){
+                     res++;
+                }
+            
+            n=n>>1;
+        }
+        
+      
+        return res;
+    }
+};
