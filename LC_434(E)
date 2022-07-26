@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int countSegments(string s) {
+        bool found=true;
+        int ans=0;
+        for(char c: s){
+            if(c==' ') found=true;
+            else if(found && c!=' '){
+                found=false;
+                ans++;
+            }
+        }
+        return ans;
+    }
+};
