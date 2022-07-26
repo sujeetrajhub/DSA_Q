@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+        set<int>s;
+        for(auto i:nums) s.insert(i);
+        vector<int>v;
+        for(auto i:s) v.push_back(i);
+        
+        if(v.size()<3) return *max_element(nums.begin(),nums.end());
+        
+        else{
+            sort(v.begin(),v.end());
+            return v[v.size()-3];
+        }   
+    }
+};
