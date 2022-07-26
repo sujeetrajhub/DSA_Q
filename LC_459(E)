@@ -1,0 +1,11 @@
+class Solution {
+public:
+    bool repeatedSubstringPattern(string s) {
+        string comb=s+s;
+        for(int i=1;i<s.size();i++){
+            string str=comb.substr(i,s.size());
+            if(str==s) return true;
+        }
+        return false;
+    }
+};
