@@ -1,0 +1,58 @@
+// class Solution {
+// public:
+//     int arrangeCoins(int n) {
+//         if(n==1 || n==2) return 1;      // if n<3 then only one cmplt staircase can be accomplished
+//         long prev=1,curr=0,ans=0;
+        
+//         for(int i=2;i<n;i++){
+//             curr=prev+i;        // maintains the total number of coins till ith lvl
+
+//             prev=curr; 
+            
+//             if(curr<=n){        // codition for chrcking completed staircase
+//                 ans=i;      // lvl of completed staircase
+
+//             }
+//             else break;     // the point where condition is false means that no more coins are left to complete the lvl of stairs so we will break out from loop and the nser wil be stored in ans variable
+//             }
+//         }
+//         }
+//         return ans;
+//     }
+// };
+
+
+
+long Coins (long n)
+{
+    return (n * (n + 1) / 2);
+}
+class Solution {
+public:
+    int arrangeCoins(int n) {
+        int s = 1;
+        int e = n;
+        int mid, ans = 0;
+        
+        while (s <= e)
+        {
+            mid = s + (e - s) / 2;
+            
+            if (Coins (mid) == n)
+                return mid;
+            
+            else if (Coins (mid) > n)
+            {
+                e = mid - 1;
+            }
+            else 
+            {
+                ans = mid;
+                s = mid + 1;
+            }
+        }
+        
+        return ans;
+        
+    }
+};
