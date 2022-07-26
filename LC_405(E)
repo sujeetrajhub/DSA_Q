@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string toHex(int num) {
+        // std:: stringstream stream;
+        //  stream << std::hex<<num;
+        // return stream.str();
+        
+        if(num==0) return "0";
+        string ans="";
+        unsigned int n=num;
+        while(n){
+            int t=n%16;
+            n/=16;
+            if(t<10){
+                ans=to_string(t)+ans;
+            }
+            else{
+                ans=(char)(t-10+'a')+ans;
+            }
+        }
+        return ans;
+    }
+};
