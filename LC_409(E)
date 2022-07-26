@@ -1,0 +1,20 @@
+int longestPalindrome(string s) {
+        map<char,int> m;                  // Define a map to store frequency of all characters
+        int l = 0;                        // Length of the string
+        for(char c: s) {
+            m[c]++;
+            l++;
+        }
+              
+        int maxL = 0;
+        for(auto p: m) {
+		   /*
+		   CASE 1: let p.second = 4  ==> we can use all 4
+		   CASE 2: let p.second = 5  ==> we can use 4 of 5 
+		   Thats why (floor division followed by multiplication)
+		   */
+            maxL += (p.second >> 1) << 1;      // Counts even characters
+        }
+        if(maxL == l) return maxL;     // All characters are included (for even length string)
+        return maxL+1;                 // Add 1 in case of odd characters palindromic string
+    }
