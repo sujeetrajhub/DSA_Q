@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool checkPerfectNumber(int num) {
+//         int sum=1;
+//         for(int i=2;i*i<num;i++){
+//             if(num%i==0)
+//                 sum+=i+num/i;
+        
+//         }
+//         return num!=1 && num==sum;
+        
+        
+         int N = sqrt(num), SUM = 0;
+        for (int i = 1; i <= N; ++i)
+            if (!(num % i))
+                SUM += i + num / i;
+        SUM -= num;
+        if (N * N == num)
+            SUM -= N;
+        cout << SUM << endl;
+        return SUM == num;
+    }
+};
