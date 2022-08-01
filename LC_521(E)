@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int findLUSlength(string a, string b) {
+        return a==b ? -1 : max(a.size(),b.size());
+        
+        // int n = a.size(), m = b.size();
+        // if (n != m) // If two strings are of unequal lenghts, then clearly if we take larger string completely as a subseqence then it is definetely not present in the smaller string. So size of larger string will be answer.
+        // {
+        //     return max(n,m);
+        // }
+        // if (a == b)
+        // {
+        //     return -1; // If both string are equal then we can't make any uncommon subsequence.
+        // }
+        // return n; // Now both strings are unequal but have equal lenghts, so if we take any of them whole as subsequence then it is clearly not present in the other one cause they are not equal.
+    }
+};
