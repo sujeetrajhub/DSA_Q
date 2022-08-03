@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int distributeCandies(vector<int>& candyType) {
+        // unordered_set<int> s(candyType.begin(),candyType.end());
+        // return min(candyType.size()/2,s.size());
+        
+    //       int n=candyType.size();
+    //       int a=n/2;           
+    //      unordered_set<int>s;
+    // for(auto i:candyType){
+    //     s.insert(i);
+    // }
+    //   return  s.size()>a?a:s.size();
+        
+        unordered_map<int,int>m;
+        for(int i=0;i<candyType.size();i++){
+            m[candyType[i]]++;
+        }
+        if(candyType.size()/2 <= m.size()){
+            return candyType.size()/2;
+        }
+        else
+            return m.size();
+    }
+};
